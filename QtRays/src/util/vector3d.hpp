@@ -6,6 +6,10 @@
 class Vector3D
 {
 public:
+    double x;
+    double y;
+    double z;
+
     Vector3D();
     Vector3D(double a);
     Vector3D(double _x, double _y, double _z);
@@ -29,11 +33,7 @@ public:
     double length_squared() const;              // magnitude squared
 
     void normalize();
-    Vector3D& hat(); // Normalize and return reference.
-
-    double x;
-    double y;
-    double z;
+    Vector3D& hat(); // normalize and return reference
 };
 
 // -----------------------------------------------------------------------
