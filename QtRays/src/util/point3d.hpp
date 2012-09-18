@@ -1,6 +1,8 @@
 #ifndef POINT3D_HPP
 #define POINT3D_HPP
 
+#include <cmath>
+
 #include "vector3d.hpp"
 
 class Point3D
