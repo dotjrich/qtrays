@@ -11,7 +11,8 @@ HEADERS += \
     src/util/renderworker.hpp \
     src/util/vector3d.hpp \
     src/util/point3d.hpp \
-    src/util/normal.hpp
+    src/util/normal.hpp \
+    src/util/math.hpp
 
 FORMS += \
     src/ui/mainwindow.ui
