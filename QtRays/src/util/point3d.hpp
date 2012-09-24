@@ -17,6 +17,8 @@ public:
     Point3D(double _x, double _y, double _z);
     Point3D(const Point3D& p);
 
+    ~Point3D();
+
     Point3D& operator= (const Point3D& rhs);
 
     Point3D operator+ (const Vector3D& rhs) const;                      // point + vec
