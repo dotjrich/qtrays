@@ -1,3 +1,11 @@
 QtRays is a fun little Qt-based ray tracer. I'm working on this very slowly.
 
 Developing this on Mac OS X 10.7 (Lion) against Qt 4.8.1. It should build on any OS supported by that version of Qt.
+
+Also tested on Ubuntu 12.04 x64 with Qt 4.8.1.
+
+To build:
+
+cd src/qtrays/QtRays
+qmake
+make
