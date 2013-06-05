@@ -10,7 +10,8 @@ SOURCES += \
     src/geometry/geometricobject.cpp \
     src/util/shaderecord.cpp \
     src/geometry/plane.cpp \
-    src/scene/scene.cpp
+    src/scene/scene.cpp \
+    src/geometry/sphere.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -24,7 +25,8 @@ HEADERS += \
     src/geometry/geometricobject.hpp \
     src/util/shaderecord.hpp \
     src/geometry/plane.hpp \
-    src/scene/scene.hpp
+    src/scene/scene.hpp \
+    src/geometry/sphere.hpp
 
 FORMS += \
     src/ui/mainwindow.ui
