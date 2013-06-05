@@ -12,8 +12,29 @@ public:
 
     virtual bool hit(const Ray& ray, double& tmin, ShadeRecord& sr) = 0;
 
+    RGBColor get_color();
+    void set_color(const RGBColor& _color);
+
 protected:
     RGBColor color;
 };
+
+// -----------------------------------------------------------------------
+// Inlined member/friend methods.
+// -----------------------------------------------------------------------
+
+inline RGBColor
+GeometricObject::get_color()
+{
+    return color;
+}
+
+// -----------------------------------------------------------------------
+
+inline void
+GeometricObject::set_color(const RGBColor& _color)
+{
+    color = _color;
+}
 
 #endif // GEOMETRICOBJECT_HPP
