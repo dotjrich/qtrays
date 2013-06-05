@@ -14,15 +14,13 @@ public:
     ~RenderWorker();
     
 signals:
-    void render_finished(QImage& img);
-    void render_update(QImage& img);
-    void error(QString& err);
+    void render_started();
+    void render_finished();//(QImage& img);
+    //void render_update(QImage& img);
+    //void error(QString& err);
     
 public slots:
     void start_render();
-
-protected:
-    
 };
 
 #endif // RENDERWORKER_HPP
