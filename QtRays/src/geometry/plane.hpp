@@ -4,6 +4,7 @@
 #include "geometricobject.hpp"
 #include "../util/normal.hpp"
 #include "../util/point3d.hpp"
+#include "../util/ray.hpp"
 #include "../util/shaderecord.hpp"
 
 class Plane : public GeometricObject

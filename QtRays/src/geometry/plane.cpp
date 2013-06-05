@@ -1,14 +1,16 @@
 #include "plane.hpp"
 
+#include "geometricobject.hpp"
+
 Plane::Plane()
-    : p(0.0), n(0.0)
+    : GeometricObject(), p(0.0), n(0.0)
 {
 }
 
 // -----------------------------------------------------------------------
 
 Plane::Plane(const Point3D& _p, const Normal& _n)
-    : p(_p), n(_n)
+    : GeometricObject(), p(_p), n(_n)
 {
 }
 
@@ -19,6 +21,9 @@ Plane::~Plane()
 }
 
 // -----------------------------------------------------------------------
+
+// intersection of ray and plane:
+// t = (a - o) dot n / (d dot n)
 
 bool
 Plane::hit(const Ray& ray, double& tmin, ShadeRecord& sr) const
