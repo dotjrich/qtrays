@@ -4,6 +4,7 @@
 class ViewPlane
 {
 public:
+    ViewPlane();
     ViewPlane(int _h, int _w, float _s, float _gamma);
 
     int h;              // height
