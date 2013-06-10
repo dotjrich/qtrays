@@ -11,7 +11,8 @@ SOURCES += \
     src/util/shaderecord.cpp \
     src/geometry/plane.cpp \
     src/scene/scene.cpp \
-    src/geometry/sphere.cpp
+    src/geometry/sphere.cpp \
+    src/scene/viewplane.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -26,7 +27,8 @@ HEADERS += \
     src/util/shaderecord.hpp \
     src/geometry/plane.hpp \
     src/scene/scene.hpp \
-    src/geometry/sphere.hpp
+    src/geometry/sphere.hpp \
+    src/scene/viewplane.hpp
 
 FORMS += \
     src/ui/mainwindow.ui
