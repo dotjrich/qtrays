@@ -7,6 +7,8 @@ public:
     ViewPlane();
     ViewPlane(int _h, int _w, float _s, float _gamma);
 
+    void set_gamma(float _gamma);
+
     int h;              // height
     int w;              // width
     float s;            // pixel size
