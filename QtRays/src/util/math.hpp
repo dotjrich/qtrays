@@ -6,7 +6,7 @@
 inline void
 set_rand_seed(int seed)
 {
-    srand(seed);
+    ::srand(seed);
 }
 
 // -----------------------------------------------------------------------
@@ -14,7 +14,7 @@ set_rand_seed(int seed)
 inline int
 rand_int()
 {
-    return rand();
+    return ::rand();
 }
 
 // -----------------------------------------------------------------------
@@ -22,7 +22,7 @@ rand_int()
 inline float
 rand_float()
 {
-    return static_cast<float>(rand()) / static_cast<float>(RAND_MAX);
+    return static_cast<float>(::rand()) / static_cast<float>(RAND_MAX);
 }
 
 #endif // MATH_HPP
