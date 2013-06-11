@@ -10,7 +10,7 @@ class GeometricObject
 public:
     GeometricObject();
 
-    virtual bool hit(const Ray& ray, double& tmin, ShadeRecord& sr) = 0;
+    virtual bool hit(const Ray& ray, double& tmin, ShadeRecord& sr) const = 0;
 
     RGBColor get_color();
     void set_color(const RGBColor& _color);
