@@ -16,4 +16,15 @@ public:
     float inv_gamma;    // inverse gamma
 };
 
+// -----------------------------------------------------------------------
+// Inlined member/friend methods.
+// -----------------------------------------------------------------------
+
+inline void
+ViewPlane::set_gamma(float _gamma)
+{
+    gamma = _gamma;
+    inv_gamma = 1.0f / _gamma;
+}
+
 #endif // VIEWPLANE_HPP
