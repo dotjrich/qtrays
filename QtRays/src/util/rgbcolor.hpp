@@ -3,8 +3,6 @@
 
 #include <cmath>
 
-#include <QColor>
-
 class RGBColor
 {
 public:
@@ -28,8 +26,6 @@ public:
     friend RGBColor operator* (const float lhs, const RGBColor& rhs);
     RGBColor operator/ (const float rhs) const;
     RGBColor operator^ (const float rhs) const;
-
-    QRgb qrgb() const;
 };
 
 // -----------------------------------------------------------------------
@@ -114,14 +110,6 @@ inline RGBColor
 RGBColor::operator^ (const float rhs) const
 {
     return RGBColor(pow(r, rhs), pow(g, rhs), pow(b, rhs));
-}
-
-// -----------------------------------------------------------------------
-
-inline QRgb
-RGBColor::qrgb() const
-{
-    return QColor::fromRgbF(r, g, b, 1.0f).rgba();
 }
 
 #endif // RGBCOLOR_HPP
