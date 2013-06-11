@@ -25,7 +25,7 @@ Scene::map_and_correct(const RGBColor &c, int dest[])
         mapped_color = mapped_color / max;
     }
 
-    // Gamma correction... stick with gamma = 1.0 for now.
+    // Gamma correction.
     if (vp.gamma != 1.0) {
         mapped_color = mapped_color ^ vp.inv_gamma;
     }
