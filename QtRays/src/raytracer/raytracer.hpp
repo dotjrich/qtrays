@@ -8,7 +8,7 @@
 class RayTracer
 {
 public:
-    RayTracer(Scene* scene);
+    RayTracer(Scene* _scene);
 
     virtual RGBColor trace_ray(const Ray& ray) const;
 
