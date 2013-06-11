@@ -20,7 +20,7 @@ Scene::map_and_correct(const RGBColor &c, int dest[])
     RGBColor mapped_color(c);
 
     // Really simple tone map for now.
-    float max = std::max(c.r, std::max(c.g, c.r));
+    float max = std::max(c.r, std::max(c.g, c.b));
     if (max > 1.0f) {
         mapped_color = mapped_color / max;
     }
