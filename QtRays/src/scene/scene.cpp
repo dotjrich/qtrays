@@ -15,7 +15,7 @@ Scene::Scene()
 // colors out of gamut.
 
 void
-Scene::map_and_correct(const RGBColor &c, int dest[])
+Scene::map_and_correct(const RGBColor& c, int dest[])
 {
     RGBColor mapped_color(c);
 
