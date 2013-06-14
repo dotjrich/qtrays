@@ -13,7 +13,9 @@ SOURCES += \
     src/scene/scene.cpp \
     src/geometry/sphere.cpp \
     src/scene/viewplane.cpp \
-    src/raytracer/raytracer.cpp
+    src/raytracer/raytracer.cpp \
+    src/raytracer/singlespheretracer.cpp \
+    src/renderer/renderer.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -30,7 +32,9 @@ HEADERS += \
     src/scene/scene.hpp \
     src/geometry/sphere.hpp \
     src/scene/viewplane.hpp \
-    src/raytracer/raytracer.hpp
+    src/raytracer/raytracer.hpp \
+    src/raytracer/singlespheretracer.hpp \
+    src/renderer/renderer.hpp
 
 FORMS += \
     src/ui/mainwindow.ui
