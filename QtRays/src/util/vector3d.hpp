@@ -123,7 +123,7 @@ operator* (const double lhs, const Vector3D& rhs)
 inline double
 Vector3D::length() const
 {
-    return sqrt(x * x + y * y + z * z);
+    return ::sqrt(x * x + y * y + z * z);
 }
 
 // -----------------------------------------------------------------------
@@ -147,7 +147,7 @@ Vector3D::cross (const Vector3D& v) const
 inline void
 Vector3D::normalize()
 {
-    double length = sqrt(x * x + y * y + z * z);
+    double length = ::sqrt(x * x + y * y + z * z);
 
     x /= length;
     y /= length;
@@ -159,7 +159,7 @@ Vector3D::normalize()
 inline Vector3D&
 Vector3D::hat()
 {
-    double length = sqrt(x * x + y * y + z * z);
+    double length = ::sqrt(x * x + y * y + z * z);
 
     x /= length;
     y /= length;

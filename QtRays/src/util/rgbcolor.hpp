@@ -109,7 +109,7 @@ RGBColor::operator/ (const float rhs) const
 inline RGBColor
 RGBColor::operator^ (const float rhs) const
 {
-    return RGBColor(pow(r, rhs), pow(g, rhs), pow(b, rhs));
+    return RGBColor(::pow(r, rhs), pow(g, rhs), pow(b, rhs));
 }
 
 #endif // RGBCOLOR_HPP
