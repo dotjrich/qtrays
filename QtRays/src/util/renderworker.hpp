@@ -10,7 +10,7 @@ class RenderWorker : public QObject
     Q_OBJECT
 
 public:
-    explicit RenderWorker(QObject *parent = 0);
+    explicit RenderWorker(QObject* parent = 0);
     ~RenderWorker();
     
 signals:

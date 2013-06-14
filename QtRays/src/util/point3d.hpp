@@ -88,7 +88,7 @@ operator* (const double lhs, const Point3D& rhs)
 // -----------------------------------------------------------------------
 
 inline double
-Point3D::distance(const Point3D &p) const
+Point3D::distance(const Point3D& p) const
 {
     return sqrt((x - p.x) * (x - p.x) +
                 (y - p.y) * (y - p.y) +
@@ -98,7 +98,7 @@ Point3D::distance(const Point3D &p) const
 // -----------------------------------------------------------------------
 
 inline double
-Point3D::distance_squared(const Point3D &p) const
+Point3D::distance_squared(const Point3D& p) const
 {
     return ((x - p.x) * (x - p.x) +
             (y - p.y) * (y - p.y) +

@@ -14,7 +14,7 @@ Sphere::Sphere()
 
 // -----------------------------------------------------------------------
 
-Sphere::Sphere(const Point3D &_center, double _radius)
+Sphere::Sphere(const Point3D& _center, double _radius)
     : GeometricObject(), center(_center), radius(_radius)
 {
 }
