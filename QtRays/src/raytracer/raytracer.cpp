@@ -12,7 +12,7 @@ RayTracer::RayTracer(Scene* _scene)
 // -----------------------------------------------------------------------
 
 RGBColor
-RayTracer::trace_ray(const Ray &ray) const
+RayTracer::trace_ray(const Ray& ray) const
 {
     return BLACK;
 }
