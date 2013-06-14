@@ -1,7 +1,10 @@
 #ifndef SCENE_HPP
 #define SCENE_HPP
 
+#include <vector>
+
 #include "viewplane.hpp"
+#include "../geometry/geometricobject.hpp"
 #include "../util/rgbcolor.hpp"
 
 class Scene
@@ -9,9 +12,9 @@ class Scene
 public:
     Scene();
 
-private:
     ViewPlane vp;
     RGBColor bgcolor;
+    std::vector<GeometricObject*> objects;
 
     void map_and_correct(const RGBColor& c, int dest[]);
 };
