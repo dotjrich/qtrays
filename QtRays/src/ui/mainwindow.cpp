@@ -36,6 +36,7 @@ void
 MainWindow::on_actionStart_triggered()
 {
     QThread* thread = new QThread();
+    img = new QImage(200, 200, QImage::Format_ARGB32); // TODO: this needs to be moved into the Renderer.
     renderer = new Renderer(img);
     renderer->moveToThread(thread);
     connect(thread, SIGNAL(started()), renderer, SLOT(start_render()));
@@ -59,22 +60,14 @@ MainWindow::render_started()
 
 void MainWindow::render_finished()
 {
-    // Junk to test QImage stuff...
-    QImage img(200, 200, QImage::Format_ARGB32);
-    img.fill(qRgba(0, 0, 0, 255));
-    for (int i = 0; i < 200; ++i) {
-        for (int j = 0; j < 200; j += 2) {
-            img.setPixel(i, j, QColor::fromRgbF(0.0f, 1.0f, 0.0f, 1.0f).rgba());
-        }
-    }
+    // TODO: removed these hardcoded sizes...
     render_results = new QLabel();
-    render_results->setPixmap(QPixmap::fromImage(img));
+    render_results->setPixmap(QPixmap::fromImage(*img));
     render_results->setMinimumSize(200, 200);
     render_results->resize(200, 200);
     render_results->setAlignment(Qt::AlignCenter);
     render_results->show();
     ui->imagelayout->addWidget(render_results);
-    //img.save("/Users/jrichards/output_asdf.jpg");
 
     ui->statusbar->showMessage(tr("Rendering Complete"));
 }
