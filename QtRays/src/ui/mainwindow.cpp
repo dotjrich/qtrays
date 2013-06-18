@@ -22,6 +22,10 @@ MainWindow::MainWindow(QWidget* parent)
 
 MainWindow::~MainWindow()
 {
+    if (img != 0) {
+        delete img;
+    }
+
     if (render_results != 0) {
         ui->imagelayout->removeWidget(render_results);
         delete render_results;
@@ -35,8 +39,13 @@ MainWindow::~MainWindow()
 void
 MainWindow::on_actionStart_triggered()
 {
-    QThread* thread = new QThread();
+    if (img != 0) {
+        delete img;
+        img = 0;
+    }
     img = new QImage(200, 200, QImage::Format_ARGB32); // TODO: this needs to be moved into the Renderer.
+
+    QThread* thread = new QThread();
     renderer = new Renderer(img);
     renderer->moveToThread(thread);
     connect(thread, SIGNAL(started()), renderer, SLOT(start_render()));
@@ -60,6 +69,11 @@ MainWindow::render_started()
 
 void MainWindow::render_finished()
 {
+    if (render_results != 0) {
+        delete render_results;
+        render_results = 0;
+    }
+
     // TODO: removed these hardcoded sizes...
     render_results = new QLabel();
     render_results->setPixmap(QPixmap::fromImage(*img));
