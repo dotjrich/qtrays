@@ -6,10 +6,12 @@
 #include <QImage>
 #include <QObject>
 
+#include "../geometry/plane.hpp"
 #include "../geometry/sphere.hpp"
 #include "../raytracer/raytracer.hpp"
-#include "../raytracer/singlespheretracer.hpp"
+#include "../raytracer/multiobjecttracer.hpp"
 #include "../scene/scene.hpp"
+#include "../util/normal.hpp"
 #include "../util/point3d.hpp"
 #include "../util/ray.hpp"
 #include "../util/rgbcolor.hpp"
@@ -57,15 +59,28 @@ Renderer::build_scene()
 {
     scene = new Scene();
     scene->bgcolor = BLACK;
-    scene->vp.h = 200;
-    scene->vp.w = 200;
+    scene->vp.h = 400;
+    scene->vp.w = 400;
     scene->vp.s = 1.0f;
     scene->vp.set_gamma(1.0f);
 
-    tracer = new SingleSphereTracer(scene);
+    //tracer = new SingleSphereTracer(scene); //first render
+    tracer = new MultiObjectTracer(scene);
 
-    Sphere* sphere = new Sphere(0.0f, 85.0);
+    //Sphere* sphere = new Sphere(0.0, 85.0); //first render
+    //scene->add_object(sphere); //first render
+
+    Sphere* sphere = new Sphere(Point3D(0.0, -25.0, 0.0), 80.0);
+    sphere->set_color(RED);
     scene->add_object(sphere);
+
+    sphere = new Sphere(Point3D(0.0, 30.0, 0.0), 60.0);
+    sphere->set_color(RGBColor(1.0, 1.0, 0.0));
+    scene->add_object(sphere);
+
+    Plane* plane = new Plane(0.0, Normal(0.0, 1.0, 1.0));
+    plane->set_color(RGBColor(0.0, 0.3, 0.0));
+    scene->add_object(plane);
 }
 
 // -----------------------------------------------------------------------
@@ -94,7 +109,8 @@ Renderer::render_scene()
             // Prepare color for display and set it in the image.
             // TODO: setPixel is expensive... we need to move to direct access via scanLine.
             map_and_correct(pixel_color, final_pixel_color);
-            img->setPixel(c, r, qRgba(final_pixel_color[0], final_pixel_color[1], final_pixel_color[2], 255));
+            int adj_row = scene->vp.h - 1 - r; // QImage's origin is top left. Our origin is bottom left.
+            img->setPixel(c, adj_row, qRgba(final_pixel_color[0], final_pixel_color[1], final_pixel_color[2], 255));
         }
     }
 }
