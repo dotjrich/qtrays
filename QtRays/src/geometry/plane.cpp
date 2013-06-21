@@ -30,7 +30,7 @@ Plane::hit(const Ray& ray, double& tmin, ShadeRecord& sr) const
 {
     double t = (p - ray.o) * n / (ray.d * n);
 
-    if (t < epsilon) {
+    if (t > epsilon) {
         tmin = t;
         sr.n = n;
         sr.local_hit_point = ray.o + (t * ray.d);
