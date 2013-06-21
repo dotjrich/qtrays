@@ -14,7 +14,8 @@ SOURCES += \
     src/scene/viewplane.cpp \
     src/raytracer/raytracer.cpp \
     src/raytracer/singlespheretracer.cpp \
-    src/renderer/renderer.cpp
+    src/renderer/renderer.cpp \
+    src/raytracer/multiobjecttracer.cpp
 
 HEADERS += \
     src/ui/mainwindow.hpp \
@@ -32,7 +33,8 @@ HEADERS += \
     src/scene/viewplane.hpp \
     src/raytracer/raytracer.hpp \
     src/raytracer/singlespheretracer.hpp \
-    src/renderer/renderer.hpp
+    src/renderer/renderer.hpp \
+    src/raytracer/multiobjecttracer.hpp
 
 FORMS += \
     src/ui/mainwindow.ui
