@@ -20,6 +20,7 @@ public:
     ~MainWindow();
 
 private slots:
+    void on_actionSave_triggered();
     void on_actionStart_triggered();
     void render_started();
     void render_finished();

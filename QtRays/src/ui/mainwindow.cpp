@@ -2,10 +2,12 @@
 #include "ui_mainwindow.h"
 
 #include <QColor>
+#include <QFileDialog>
 #include <QImage>
 #include <QLabel>
 #include <QMainWindow>
 #include <QPixmap>
+#include <QString>
 #include <QThread>
 
 #include "../renderer/renderer.hpp"
@@ -32,6 +34,18 @@ MainWindow::~MainWindow()
     }
 
     delete ui;
+}
+
+// -----------------------------------------------------------------------
+
+void
+MainWindow::on_actionSave_triggered()
+{
+    QString file_name = QFileDialog::getSaveFileName(this, "", "", tr("Images (*.png)"));
+
+    if (!file_name.isEmpty() && img) {
+        img->save(file_name);
+    }
 }
 
 // -----------------------------------------------------------------------
@@ -83,5 +97,6 @@ void MainWindow::render_finished()
     render_results->show();
     ui->imagelayout->addWidget(render_results);
 
+    ui->actionSave->setEnabled(true);
     ui->statusbar->showMessage(tr("Rendering Complete"));
 }
