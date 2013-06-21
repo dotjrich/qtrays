@@ -7,7 +7,7 @@
 #include "../util/rgbcolor.hpp"
 #include "../util/shaderecord.hpp"
 
-class MultiObjectTracer : RayTracer
+class MultiObjectTracer : public RayTracer
 {
 public:
     MultiObjectTracer(Scene* _scene);
