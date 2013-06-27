@@ -83,6 +83,7 @@ MainWindow::render_started()
 void MainWindow::render_finished()
 {
     if (render_results != 0) {
+        ui->imagelayout->removeWidget(render_results);
         delete render_results;
         render_results = 0;
     }
