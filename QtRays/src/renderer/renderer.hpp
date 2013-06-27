@@ -13,7 +13,7 @@ class Renderer : public QObject
     Q_OBJECT
 
 public:
-    Renderer(QImage*& _img, QObject* parent = 0);
+    Renderer(QImage** _img, QObject* parent = 0);
 
     ~Renderer();
 
@@ -28,7 +28,7 @@ public slots:
     void start_render();
 
 protected:
-    QImage* img;
+    QImage** img;
     RayTracer* tracer;
     Scene* scene;
 

@@ -57,10 +57,9 @@ MainWindow::on_actionStart_triggered()
         delete img;
         img = 0;
     }
-    img = new QImage(400, 400, QImage::Format_ARGB32); // TODO: this needs to be moved into the Renderer.
 
     QThread* thread = new QThread();
-    renderer = new Renderer(img);
+    renderer = new Renderer(&img);
     renderer->moveToThread(thread);
     connect(thread, SIGNAL(started()), renderer, SLOT(start_render()));
     connect(renderer, SIGNAL(render_started()), this, SLOT(render_started()));
@@ -88,11 +87,13 @@ void MainWindow::render_finished()
         render_results = 0;
     }
 
-    // TODO: removed these hardcoded sizes...
+    int w = img->width();
+    int h = img->height();
+
     render_results = new QLabel();
     render_results->setPixmap(QPixmap::fromImage(*img));
-    render_results->setMinimumSize(400, 400);
-    render_results->resize(400, 400);
+    render_results->setMinimumSize(w, h);
+    render_results->resize(w, h);
     render_results->setAlignment(Qt::AlignCenter);
     render_results->show();
     ui->imagelayout->addWidget(render_results);

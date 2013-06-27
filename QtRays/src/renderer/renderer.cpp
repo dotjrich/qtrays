@@ -17,7 +17,7 @@
 #include "../util/rgbcolor.hpp"
 #include "../util/vector3d.hpp"
 
-Renderer::Renderer(QImage*& _img, QObject* parent)
+Renderer::Renderer(QImage** _img, QObject* parent)
     : QObject(parent), img(_img), tracer(0), scene(0)
 {
 }
@@ -88,6 +88,9 @@ Renderer::build_scene()
 void
 Renderer::render_scene()
 {
+    // Create QImage.
+    *img = new QImage(scene->vp.w, scene->vp.h, QImage::Format_ARGB32);
+
     // Ray origin components... fixed Z for now.
     double x;
     double y;
@@ -95,7 +98,6 @@ Renderer::render_scene()
     Ray ray(0.0, Vector3D(0.0, 0.0, -1.0));
 
     int final_pixel_color[3];
-
 
     for (int r = 0; r < scene->vp.h; ++r) {
         for (int c = 0; c < scene->vp.w; ++c) {
@@ -110,7 +112,7 @@ Renderer::render_scene()
             // TODO: setPixel is expensive... we need to move to direct access via scanLine.
             map_and_correct(pixel_color, final_pixel_color);
             int adj_row = scene->vp.h - 1 - r; // QImage's origin is top left. Our origin is bottom left.
-            img->setPixel(c, adj_row, qRgba(final_pixel_color[0], final_pixel_color[1], final_pixel_color[2], 255));
+            (*img)->setPixel(c, adj_row, qRgba(final_pixel_color[0], final_pixel_color[1], final_pixel_color[2], 255));
         }
     }
 }
