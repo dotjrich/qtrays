@@ -19,6 +19,7 @@ public:
 
     RGBColor& operator= (const RGBColor& rhs);
     RGBColor& operator+= (const RGBColor& rhs);
+    RGBColor& operator/= (const float& rhs);
 
     RGBColor operator+ (const RGBColor& rhs) const;
     RGBColor operator* (const RGBColor& rhs) const;
@@ -60,6 +61,18 @@ RGBColor::operator+= (const RGBColor& rhs)
     r += rhs.r;
     g += rhs.g;
     b += rhs.b;
+
+    return *this;
+}
+
+// -----------------------------------------------------------------------
+
+inline RGBColor&
+RGBColor::operator/= (const float& rhs)
+{
+    r /= rhs;
+    g /= rhs;
+    b /= rhs;
 
     return *this;
 }
