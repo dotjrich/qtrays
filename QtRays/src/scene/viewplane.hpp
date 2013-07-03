@@ -5,12 +5,12 @@ class ViewPlane
 {
 public:
     ViewPlane();
-    ViewPlane(int _h, int _w, float _s, float _gamma);
+    ViewPlane(int _hres, int _vres, float _s, float _gamma);
 
     void set_gamma(float _gamma);
 
-    int h;              // height
-    int w;              // width
+    int hres;           // horiz resolution
+    int vres;           // vert resolution
     float s;            // pixel size
     float gamma;        // gamma factor
     float inv_gamma;    // inverse gamma

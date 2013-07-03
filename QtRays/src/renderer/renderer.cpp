@@ -59,8 +59,8 @@ Renderer::build_scene()
 {
     scene = new Scene();
     scene->bgcolor = BLACK;
-    scene->vp.h = 400;
-    scene->vp.w = 400;
+    scene->vp.hres = 400;
+    scene->vp.vres = 400;
     scene->vp.s = 1.0f;
     scene->vp.set_gamma(1.0f);
 
@@ -89,7 +89,7 @@ void
 Renderer::render_scene()
 {
     // Create QImage.
-    *img = new QImage(scene->vp.w, scene->vp.h, QImage::Format_ARGB32);
+    *img = new QImage(scene->vp.hres, scene->vp.vres, QImage::Format_ARGB32);
 
     // Ray origin components... fixed Z for now.
     double x;
@@ -99,11 +99,11 @@ Renderer::render_scene()
 
     int final_pixel_color[3];
 
-    for (int r = 0; r < scene->vp.h; ++r) {
-        for (int c = 0; c < scene->vp.w; ++c) {
+    for (int r = 0; r < scene->vp.vres; ++r) {
+        for (int c = 0; c < scene->vp.hres; ++c) {
             // Calculate x and y, based on height, width, and pixel size.
-            x = scene->vp.s * (c - 0.5 * (scene->vp.w - 1.0));
-            y = scene->vp.s * (r - 0.5 * (scene->vp.h - 1.0));
+            x = scene->vp.s * (c - 0.5 * (scene->vp.hres - 1.0));
+            y = scene->vp.s * (r - 0.5 * (scene->vp.vres - 1.0));
 
             ray.o = Point3D(x, y, z);
             RGBColor pixel_color = tracer->trace_ray(ray);
@@ -111,7 +111,7 @@ Renderer::render_scene()
             // Prepare color for display and set it in the image.
             // TODO: setPixel is expensive... we need to move to direct access via scanLine.
             map_and_correct(pixel_color, final_pixel_color);
-            int adj_row = scene->vp.h - 1 - r; // QImage's origin is top left. Our origin is bottom left.
+            int adj_row = scene->vp.vres - 1 - r; // QImage's origin is top left. Our origin is bottom left.
             (*img)->setPixel(c, adj_row, qRgba(final_pixel_color[0], final_pixel_color[1], final_pixel_color[2], 255));
         }
     }
